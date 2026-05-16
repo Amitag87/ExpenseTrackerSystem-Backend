@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth_db?createDatabaseIfNotExist=true
+    username: root
+    password: ${DB_PASSWORD:REPLACE_WITH_LOCAL_DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+jwt:
+  secret: ${JWT_SECRET:REPLACE_WITH_JWT_SECRET_32_CHARS}
+  expiry: 86400000
+
+debug: false
+
+category:
+  service:
+    url: http://localhost:8084
+
+app:
+  google:
+    client-id: ${GOOGLE_CLIENT_ID:REPLACE_WITH_GOOGLE_OAUTH_CLIENT_ID}
+    client-secret: ${GOOGLE_CLIENT_SECRET:REPLACE_WITH_GOOGLE_OAUTH_CLIENT_SECRET}
+  cors:
+    allowed-origins:
+      - http://localhost:3000
+      - http://localhost:4200
+      - http://localhost:8080
